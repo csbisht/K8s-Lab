@@ -96,4 +96,9 @@ variable "display_name_jump" {
 variable "display_name_cluster1_master" {
   default = "cluster1_master"
 }
-
+variable "display_name_cluster1_node" {
+  default = "cluster1_node"
+}
+variable "cluster1_node_count" {
+  default = "2"
+}

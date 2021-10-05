@@ -106,7 +106,7 @@ module "CreateInstances_jump" {
 
 # Create Cluster1 instances for K8s Lab
 module "CreateInstances_cluster1_master" {
-  source                       = "./module-instance-cluster1"
+  source                       = "./module-instance-cluster1/master"
   compartment_id               = module.CreateCompartment.compartment.id
   instance_availability_domain = lookup(data.oci_identity_availability_domains.GetAds.availability_domains[0], "name")
   subnet_id                    = module.CreateSubnet.subnet.id
@@ -116,4 +116,19 @@ module "CreateInstances_cluster1_master" {
   ssh_private_key              = var.ssh_private_key
   assign_public_ip             = var.assign_public_ip
   display_name_cluster1_master = var.display_name_cluster1_master
+}
+
+# Create Cluster1 instances for K8s Lab
+module "CreateInstances_cluster1_node" {
+  source                       = "./module-instance-cluster1/worker-node"
+  cluster1_node_count          = var.cluster1_node_count
+  compartment_id               = module.CreateCompartment.compartment.id
+  instance_availability_domain = lookup(data.oci_identity_availability_domains.GetAds.availability_domains[0], "name")
+  subnet_id                    = module.CreateSubnet.subnet.id
+  image_id                     = lookup(data.oci_core_images.ubuntulinux.images[0], "id")
+  shape_id                     = var.shape_name_k8s
+  ssh_public_key               = var.ssh_public_key
+  ssh_private_key              = var.ssh_private_key
+  assign_public_ip             = var.assign_public_ip
+  display_name_cluster1_node   = var.display_name_cluster1_node
 }

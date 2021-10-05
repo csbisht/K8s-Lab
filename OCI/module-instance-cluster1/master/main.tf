@@ -27,7 +27,7 @@ resource "oci_core_instance" "CreateInstance_cluster1_master" {
   }
    preserve_boot_volume = false
   provisioner "file" {
-    source      = "./module-instance-cluster1/scripts/"
+    source      = "./module-instance-cluster1/master/scripts/"
     destination = "/tmp/"
     connection {
       type        = "ssh"
