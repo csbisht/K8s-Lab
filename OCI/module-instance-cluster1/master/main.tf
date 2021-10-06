@@ -45,6 +45,7 @@ resource "oci_core_instance" "CreateInstance_cluster1_master" {
       "sudo /tmp/install_container_runtime.sh",
       "sudo /tmp/install_docker.sh",
       "sudo /tmp/kubeadm_init.sh",
+      "/tmp/add_kubeconfig.sh",
     ]
     connection {
       type        = "ssh"
