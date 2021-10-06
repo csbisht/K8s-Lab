@@ -56,3 +56,4 @@ resource "oci_core_instance" "CreateInstance_cluster1_node" {
     }
   }
 }
+

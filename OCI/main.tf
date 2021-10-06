@@ -132,3 +132,4 @@ module "CreateInstances_cluster1_node" {
   assign_public_ip             = var.assign_public_ip
   display_name_cluster1_node   = var.display_name_cluster1_node
 }
+

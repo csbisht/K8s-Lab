@@ -102,3 +102,4 @@ variable "display_name_cluster1_node" {
 variable "cluster1_node_count" {
   default = "2"
 }
+
