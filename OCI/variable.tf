@@ -100,6 +100,25 @@ variable "display_name_cluster1_node" {
   default = "cluster1_node"
 }
 variable "cluster1_node_count" {
-  default = "2"
+  default = "1"
 }
 
+variable "display_name_cluster2_master" {
+  default = "cluster2_master"
+}
+variable "display_name_cluster2_node" {
+  default = "cluster2_node"
+}
+variable "cluster2_node_count" {
+  default = "1"
+}
+
+variable "display_name_cluster3_master" {
+  default = "cluster3_master"
+}
+variable "display_name_cluster3_node" {
+  default = "cluster3_node"
+}
+variable "cluster3_node_count" {
+  default = "1"
+}

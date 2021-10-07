@@ -16,7 +16,11 @@ echo \
   
 sudo apt-get update
 sleep 10
+for i in {1..3}
+do
 sudo apt-get install -y docker-ce=5:19.03.15~3-0~ubuntu-focal docker-ce-cli=5:19.03.15~3-0~ubuntu-focal containerd.io
+sleep 5
+done
 
 sudo mkdir -p /etc/containerd
 

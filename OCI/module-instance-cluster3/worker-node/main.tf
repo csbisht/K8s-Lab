@@ -6,9 +6,11 @@ variable "subnet_id" {}
 variable "ssh_public_key" {}
 variable "assign_public_ip" {}
 variable "ssh_private_key" {}
-variable "display_name_cluster1_master" {}
+variable "display_name_cluster3_node" {}
+variable "cluster3_node_count" {}
 
-resource "oci_core_instance" "CreateInstance_cluster1_master" {
+resource "oci_core_instance" "CreateInstance_cluster3_node" {
+  count = "${var.cluster3_node_count}"
   availability_domain = var.instance_availability_domain
   compartment_id      = var.compartment_id
   shape               = var.shape_id
@@ -18,7 +20,7 @@ resource "oci_core_instance" "CreateInstance_cluster1_master" {
   }
 
     # Optional
-    display_name = var.display_name_cluster1_master
+    display_name = "${var.display_name_cluster3_node}${count.index}"
     create_vnic_details {
         subnet_id = "${var.subnet_id}"
     }
@@ -27,8 +29,9 @@ resource "oci_core_instance" "CreateInstance_cluster1_master" {
   }
    preserve_boot_volume = false
   provisioner "file" {
-    source      = "./module-instance-cluster1/master/scripts/"
+    source      = "./module-instance-cluster3/worker-node/scripts/"
     destination = "/tmp/"
+
     connection {
       type        = "ssh"
       host        = "${self.public_ip}"
@@ -44,8 +47,6 @@ resource "oci_core_instance" "CreateInstance_cluster1_master" {
       "sudo /tmp/install_kubeadm_kubelet_kubectl.sh",
       "sudo /tmp/install_container_runtime.sh",
       "sudo /tmp/install_docker.sh",
-      "sudo /tmp/kubeadm_init.sh",
-      "sudo /tmp/add_kubeconfig.sh",
     ]
     connection {
       type        = "ssh"
@@ -55,3 +56,4 @@ resource "oci_core_instance" "CreateInstance_cluster1_master" {
     }
   }
 }
+

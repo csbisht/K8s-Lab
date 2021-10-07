@@ -6,9 +6,9 @@ variable "subnet_id" {}
 variable "ssh_public_key" {}
 variable "assign_public_ip" {}
 variable "ssh_private_key" {}
-variable "display_name_cluster1_master" {}
+variable "display_name_cluster3_master" {}
 
-resource "oci_core_instance" "CreateInstance_cluster1_master" {
+resource "oci_core_instance" "CreateInstance_cluster3_master" {
   availability_domain = var.instance_availability_domain
   compartment_id      = var.compartment_id
   shape               = var.shape_id
@@ -18,7 +18,7 @@ resource "oci_core_instance" "CreateInstance_cluster1_master" {
   }
 
     # Optional
-    display_name = var.display_name_cluster1_master
+    display_name = var.display_name_cluster3_master
     create_vnic_details {
         subnet_id = "${var.subnet_id}"
     }
@@ -27,7 +27,7 @@ resource "oci_core_instance" "CreateInstance_cluster1_master" {
   }
    preserve_boot_volume = false
   provisioner "file" {
-    source      = "./module-instance-cluster1/master/scripts/"
+    source      = "./module-instance-cluster3/master/scripts/"
     destination = "/tmp/"
     connection {
       type        = "ssh"

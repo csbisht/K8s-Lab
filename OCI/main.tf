@@ -104,7 +104,7 @@ module "CreateInstances_jump" {
   display_name_jump            = var.display_name_jump
 }
 
-# Create Cluster1 instances for K8s Lab
+# Create Cluster1 master instances for K8s Lab
 module "CreateInstances_cluster1_master" {
   source                       = "./module-instance-cluster1/master"
   compartment_id               = module.CreateCompartment.compartment.id
@@ -118,7 +118,7 @@ module "CreateInstances_cluster1_master" {
   display_name_cluster1_master = var.display_name_cluster1_master
 }
 
-# Create Cluster1 instances for K8s Lab
+# Create Cluster1 worker instances for K8s Lab
 module "CreateInstances_cluster1_node" {
   source                       = "./module-instance-cluster1/worker-node"
   cluster1_node_count          = var.cluster1_node_count
@@ -133,3 +133,60 @@ module "CreateInstances_cluster1_node" {
   display_name_cluster1_node   = var.display_name_cluster1_node
 }
 
+# Create Cluster2 master instances for K8s Lab
+module "CreateInstances_cluster2_master" {
+  source                       = "./module-instance-cluster2/master"
+  compartment_id               = module.CreateCompartment.compartment.id
+  instance_availability_domain = lookup(data.oci_identity_availability_domains.GetAds.availability_domains[0], "name")
+  subnet_id                    = module.CreateSubnet.subnet.id
+  image_id                     = lookup(data.oci_core_images.ubuntulinux.images[0], "id")
+  shape_id                     = var.shape_name_k8s
+  ssh_public_key               = var.ssh_public_key
+  ssh_private_key              = var.ssh_private_key
+  assign_public_ip             = var.assign_public_ip
+  display_name_cluster2_master = var.display_name_cluster2_master
+}
+
+# Create Cluster2 worker instances for K8s Lab
+module "CreateInstances_cluster2_node" {
+  source                       = "./module-instance-cluster2/worker-node"
+  cluster2_node_count          = var.cluster2_node_count
+  compartment_id               = module.CreateCompartment.compartment.id
+  instance_availability_domain = lookup(data.oci_identity_availability_domains.GetAds.availability_domains[0], "name")
+  subnet_id                    = module.CreateSubnet.subnet.id
+  image_id                     = lookup(data.oci_core_images.ubuntulinux.images[0], "id")
+  shape_id                     = var.shape_name_k8s
+  ssh_public_key               = var.ssh_public_key
+  ssh_private_key              = var.ssh_private_key
+  assign_public_ip             = var.assign_public_ip
+  display_name_cluster2_node   = var.display_name_cluster2_node
+}
+
+# Create Cluster3 master instances for K8s Lab
+module "CreateInstances_cluster3_master" {
+  source                       = "./module-instance-cluster3/master"
+  compartment_id               = module.CreateCompartment.compartment.id
+  instance_availability_domain = lookup(data.oci_identity_availability_domains.GetAds.availability_domains[0], "name")
+  subnet_id                    = module.CreateSubnet.subnet.id
+  image_id                     = lookup(data.oci_core_images.ubuntulinux.images[0], "id")
+  shape_id                     = var.shape_name_k8s
+  ssh_public_key               = var.ssh_public_key
+  ssh_private_key              = var.ssh_private_key
+  assign_public_ip             = var.assign_public_ip
+  display_name_cluster3_master = var.display_name_cluster3_master
+}
+
+# Create Cluster3 worker instances for K8s Lab
+module "CreateInstances_cluster3_node" {
+  source                       = "./module-instance-cluster3/worker-node"
+  cluster3_node_count          = var.cluster3_node_count
+  compartment_id               = module.CreateCompartment.compartment.id
+  instance_availability_domain = lookup(data.oci_identity_availability_domains.GetAds.availability_domains[0], "name")
+  subnet_id                    = module.CreateSubnet.subnet.id
+  image_id                     = lookup(data.oci_core_images.ubuntulinux.images[0], "id")
+  shape_id                     = var.shape_name_k8s
+  ssh_public_key               = var.ssh_public_key
+  ssh_private_key              = var.ssh_private_key
+  assign_public_ip             = var.assign_public_ip
+  display_name_cluster3_node   = var.display_name_cluster3_node
+}

@@ -5,6 +5,11 @@ fingerprint        = "aa:04:45:d5:5e:dd:ea:17:84:80:b4:fd:b6:6e:a2:0a"
 region             = "ap-mumbai-1"
 private_security_list_name = "K8s-Lab-SL"
 
+#####set worker node count here###its already set default value = 1 in variable.tf, if you wants to update/change the value uncomment to below####
+#cluster1_node_count = "1"
+#cluster2_node_count = "1"
+#cluster3_node_count = "1"
+
 ###set ssh key path here to connect your VM instances
 ssh_public_key            = "~/K8s-Lab/OCI/oci_key/K8s_test.pub"
 ssh_private_key           = "~/K8s-Lab/OCI/oci_key/K8s_test"
