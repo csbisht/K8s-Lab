@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update
-
+sleep 10
 sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
@@ -14,12 +14,13 @@ echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   
-
 sudo apt-get update
-
 sleep 10
-
+for i in {1..3}
+do
 sudo apt-get install -y docker-ce=5:19.03.15~3-0~ubuntu-focal docker-ce-cli=5:19.03.15~3-0~ubuntu-focal containerd.io
+sleep 5
+done
 
 sudo mkdir -p /etc/containerd
 
