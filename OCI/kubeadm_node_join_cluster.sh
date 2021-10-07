@@ -1,6 +1,6 @@
 #!/bin/bash
 
-k8sclustername=( "cluster1" )
+k8sclustername=( "cluster1" "cluster2" "cluster3" )
 joincluster () {
 masterip=`terraform output instance_${1}_master_public_ip |awk -F '"' '{print $2}'`
 nodeip=`terraform output instance_${1}_node_public_ip |awk -F '"' '{print $2}'`
@@ -25,7 +25,7 @@ master_hostname=`ssh -o "StrictHostKeyChecking no" -i ~/K8s-Lab/OCI/oci_key/K8s_
 ###add kube-config in jump
 ssh -o "StrictHostKeyChecking no" -i ~/K8s-Lab/OCI/oci_key/K8s_test ubuntu@"${jump_public_ip}" "mkdir -p /home/ubuntu/.kube"
 scp -o "StrictHostKeyChecking no" -i ~/K8s-Lab/OCI/oci_key/K8s_test ubuntu@"${master_public_ip}":/home/ubuntu/.kube/config ~/K8s-Lab/OCI/oci_key/${1}.config
-scp -o "StrictHostKeyChecking no" -i ~/K8s-Lab/OCI/oci_key/K8s_test ~/K8s-Lab/OCI/oci_key/${1}.config ubuntu@"${jump_public_ip}":/home/ubuntu/.kube/cluster1.config
+scp -o "StrictHostKeyChecking no" -i ~/K8s-Lab/OCI/oci_key/K8s_test ~/K8s-Lab/OCI/oci_key/${1}.config ubuntu@"${jump_public_ip}":/home/ubuntu/.kube/${1}.config
 rm ~/K8s-Lab/OCI/oci_key/${1}.config
 
 ###add master private ip host entry in master 
@@ -60,12 +60,12 @@ done
 }
 
 
-for i in ${k8sclustername}
+for i in ${k8sclustername[@]}
 do
 joincluster ${i}
 done
 
-for i in ${k8sclustername}
+for i in ${k8sclustername[@]}
 do
 addhosts ${i}
 done
