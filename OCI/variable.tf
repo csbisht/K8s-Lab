@@ -94,7 +94,7 @@ variable "display_name_jump" {
   default = "K8s_jump"
 }
 variable "display_name_cluster1_master" {
-  default = "cluster1_master"
+  default = "cluster1_controlplane"
 }
 variable "display_name_cluster1_node" {
   default = "cluster1_node"
@@ -104,7 +104,7 @@ variable "cluster1_node_count" {
 }
 
 variable "display_name_cluster2_master" {
-  default = "cluster2_master"
+  default = "cluster2_controlplane"
 }
 variable "display_name_cluster2_node" {
   default = "cluster2_node"
@@ -114,7 +114,7 @@ variable "cluster2_node_count" {
 }
 
 variable "display_name_cluster3_master" {
-  default = "cluster3_master"
+  default = "cluster3_controlplane"
 }
 variable "display_name_cluster3_node" {
   default = "cluster3_node"
