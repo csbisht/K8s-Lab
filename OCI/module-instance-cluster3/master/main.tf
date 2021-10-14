@@ -46,6 +46,7 @@ resource "oci_core_instance" "CreateInstance_cluster3_master" {
       "sudo /tmp/install_docker.sh",
       "sudo /tmp/kubeadm_init.sh",
       "sudo /tmp/add_kubeconfig.sh",
+      "sudo /tmp/install_etcd-client.sh",
     ]
     connection {
       type        = "ssh"
