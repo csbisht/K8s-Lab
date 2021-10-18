@@ -53,7 +53,8 @@ resource "oci_core_instance" "CreateInstance_jump" {
     inline = [
       "chmod +x /tmp/*.sh",
       "sudo /tmp/install_kubectl.sh",
-      "chmod 600 ~/.ssh/id_rsa"
+      "sudo /tmp/sshkeepalive.sh",
+      "chmod 600 ~/.ssh/id_rsa",
     ]
     connection {
       type        = "ssh"
