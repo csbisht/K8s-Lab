@@ -54,6 +54,8 @@ resource "oci_core_instance" "CreateInstance_jump" {
       "chmod +x /tmp/*.sh",
       "sudo /tmp/install_kubectl.sh",
       "sudo /tmp/sshkeepalive.sh",
+      "sudo mv /tmp/Start_CKA_Lab.sh /home/ubuntu/",
+      "sudo /tmp/clonegitrepo.sh",
       "chmod 600 ~/.ssh/id_rsa",
     ]
     connection {
