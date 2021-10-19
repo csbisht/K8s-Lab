@@ -5,6 +5,8 @@ joincluster () {
 masterip=`terraform output instance_${1}_master_public_ip |awk -F '"' '{print $2}'`
 nodeip=`terraform output instance_${1}_node_public_ip |awk -F '"' '{print $2}'`
 
+chmod 600 ~/K8s-Lab/OCI/oci_key/K8s_test
+
 kubeadmjoin=`ssh -o "StrictHostKeyChecking no" -i ~/K8s-Lab/OCI/oci_key/K8s_test ubuntu@"${masterip}" "sudo kubeadm token create --print-join-command"`
 for i in ${nodeip}
 do
