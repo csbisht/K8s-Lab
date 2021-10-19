@@ -7,3 +7,16 @@
 ## **K8s Hands on Lab**
  
 In this K8s Hands on Lab, you can setup kubernetes lab environment on Oracle Cloud (OCI) and you can practice kubernetes questions to prepare CKA exam.
+## **Prerequisites**
+You have to create SSH key to login to compute instance on OCI (refer this link- https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/tf-compute/01-summary.htm) and also you need to Generating an API Signing Key (its optional, refer this link - https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four). All private and public keys you need to place inside K8s-Lab/OCI/oci_key as below file name:-
+```
+SSH private key file:- K8s_test
+
+SSH public key file:- K8s_test.pub
+
+API private key file:- oci_api_key.pem
+```
+**Note:-** You have to add API finger print to your OCI **Identity>>Users>>User Details>>API Keys**. Else you can create API key and fingerprint from the OCI console.
+***There is already available default ssh key and api key in K8s-Lab/OCI/oci_key you can use that or you can create your own keys.
+
+## **Steps**
