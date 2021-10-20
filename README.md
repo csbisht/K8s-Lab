@@ -31,3 +31,26 @@ API private key file:- oci_api_key.pem
 git clone https://github.com/csbisht/K8s-Lab.git
 ```
 **3) Add the Prerequisites in K8s-Lab/OCI/oci_key and OCI/config/ap-mumbai-1/k8s-test.tfvars**
+
+![TFVARS FILE](https://github.com/csbisht/K8s-Lab/blob/main/images/tfvars_file.png)
+
+**4) Change directory in K8s-Lab/OCI if you not there and Initialize the working directory using the terraform init command.**
+```
+cd K8s-Lab/OCI
+terraform init
+```
+**5) Use the terraform plan command to test the execution plan.**
+```
+terraform plan -var-file config/ap-mumbai-1/k8s-test.tfvars
+```
+**6) Use the terraform apply command to create the OCI Compartment, VCN, Subnets, Rout Tables, Internet Gateways, Security Lists and compute instances.**
+```
+terraform apply -var-file config/ap-mumbai-1/k8s-test.tfvars
+```
+**7) After your K8s Lab infrastructure created, you need to join your worker nodes in the K8s cluster. Execute below command to join worker nodes to K8s cluster.**
+```
+./kubeadm_node_join_cluster.sh
+```
+**8) Now your K8s Lab is ready, login to jump machine to start your Lab.**
+
+
