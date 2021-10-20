@@ -21,4 +21,13 @@ API private key file:- oci_api_key.pem
 **There is already available default ssh key and api key in K8s-Lab/OCI/oci_key you can use that or you can create your own keys.**
 
 ## **Steps**
-Login your [OCI](https://oraclecloud.com) account and click to Cloud Shell. We using cloud shell because it has pre-installed Terraform and its dependencies.
+
+**1) Login your [OCI](https://oraclecloud.com) account and click to Cloud Shell. We using cloud shell because it has pre-installed Terraform and its dependencies.**
+
+![Cloud Shell](https://github.com/csbisht/K8s-Lab/blob/main/images/CloudShell.png)
+
+**2) Run below command in Cloud Shell to clone the repo:**
+```
+git clone https://github.com/csbisht/K8s-Lab.git
+```
+**3) Add the Prerequisites in K8s-Lab/OCI/oci_key and OCI/config/ap-mumbai-1/k8s-test.tfvars**
