@@ -1,7 +1,7 @@
 tenancy_ocid       = "< YOUR TENANCY OCID >"
 user_ocid          = "< YOUR USER OCID >"
 private_key_path   = "~/K8s-Lab/OCI/oci_key/oci_api_key.pem"
-fingerprint        = "aa:04:45:d5:5e:dd:ea:17:84:80:b4:fd:b6:6e:a2:0a"
+fingerprint        = "< YOUR API FINGERPRINT >"
 region             = "ap-mumbai-1"
 private_security_list_name = "K8s-Lab-SL"
 
