@@ -92,10 +92,11 @@ ssh cluster3-controlplane
 or
 ssh cluster3-node0
 ```
-**12) Now its time to run CKA Lab. To start the Lab you have to two ssh connection on jump machine one for your Labs questions and second for your command execution. Now run below command to start Lab.**
+**12) Now its time to run CKA Lab. To start the Lab you have to connect with two ssh connection on jump machine one for your Labs questions and second for your command execution. Now run below command to start Lab.**
 ```
 ./Start_CKA_Lab.sh
 ```
 
-
+## **LICENSE**
+Distributed under the GNU General Public License v2.0. See [LICENSE](https://github.com/csbisht/K8s-Lab/blob/main/LICENSE) for more information.
 
