@@ -96,6 +96,10 @@ ssh cluster3-node0
 ```
 ./Start_CKA_Lab.sh
 ```
+**13) Once you done with your all labs and you wants to practice it again then re-set the K8s infra (use below command to destroy your K8s Lab) and follow from steps 4.**
+```
+terraform destroy -var-file config/ap-mumbai-1/k8s-test.tfvars
+```
 
 ## **LICENSE**
 Distributed under the GNU General Public License v2.0. See [LICENSE](https://github.com/csbisht/K8s-Lab/blob/main/LICENSE) for more information.
